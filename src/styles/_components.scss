@@ -1,0 +1,627 @@
+@use "sass:math";
+@use './settings/settings' as *;
+@use './settings/_mixins.scss' as *;
+
+.components {
+      background-color: lightgray;
+   // .components__container
+   &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: toRem(50);
+      padding-top: toRem(50);
+   }
+
+   // .components__item
+   &__item {}
+}
+
+
+// ===========================================================================================
+// -----------------------------
+// Buttons-active
+// -----------------------------
+.icon-menu {
+   position: relative;
+   width: toRem(30);
+   height: toRem(20);
+   z-index: 10;
+   flex-shrink: 0;
+
+   &::before,
+   &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: toRem(3);
+      border-radius: toRem(10);
+      background-color: $white;
+      transition: all 0.3s;
+   }
+
+   &::before {
+      top: 0;
+   }
+
+   &::after {
+      bottom: 0;
+   }
+
+   span {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      translate: 0 -50%;
+      background-color: $white;
+      width: 70%;
+      height: toRem(3);
+      border-radius: toRem(10);
+      transition: all 0.3s;
+   }
+
+   @media (min-width: toEm(850)) {
+      display: none;
+   }
+}
+
+.menu-open {
+   .icon-menu {
+      &::before {
+         top: 50%;
+         rotate: 45deg;
+         translate: 0 -50%;
+      }
+
+      &::after {
+         top: 50%;
+         rotate: -45deg;
+         translate: 0 -50%;
+      }
+
+      span {
+         width: 0;
+      }
+   }
+}
+
+// ===========================================================================================
+// -----------------------------
+// Buttons
+// -----------------------------
+.button {
+   font-size: toRem(22);
+   color: $primiryColor;
+   border: toRem(2) solid $primiryColor;
+   padding-block: toRem(20);
+   @include adaptiveValue('padding-inline', 57, 25);
+   max-height: toRem(73);
+   letter-spacing: toRem(0.2);
+   transition: all 0.4s;
+   flex-shrink: 0;
+
+   @media (any-hover: hover) and (any-pointer: fine) {
+      &:hover {
+         background-color: $primiryColor;
+         color: $bgDark;
+      }
+   }
+
+   &--color-white {
+      color: $white;
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+         &:hover {
+            color: $bgDark;
+            background-color: $primiryColor;
+         }
+      }
+   }
+
+   &--yellow {
+      background-color: $primiryColor;
+      color: $bgDark;
+      letter-spacing: toRem(0.44);
+
+      &__reserv {
+         @include adaptiveValue('padding-inline', 85, 40);
+      }
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+         &:hover {
+            background-color: transparent;
+            color: $primiryColor;
+         }
+      }
+   }
+
+   &--white {
+      background-color: $white;
+      color: $black;
+      @include adaptiveValue('padding-inline', 54, 25);
+      border: none;
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+         &:hover {
+            background-color: $primiryColor;
+            color: $white;
+         }
+      }
+   }
+}
+
+// ===========================================================================================
+// -----------------------------
+// Components
+// -----------------------------
+.block-header {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+
+   >* {
+      margin-bottom: toRem(12);
+
+      &:last-child {
+         margin-bottom: toRem(0);
+      }
+   }
+
+   // .block-header__label
+   &__label {
+      color: $bgDark;
+      @include adaptiveValue('font-size', 15, 13);
+      text-transform: uppercase;
+      letter-spacing: toRem(3);
+      border-top: toRem(1) solid $primiryColor;
+      border-bottom: toRem(1) solid $primiryColor;
+   }
+
+   // .block-header__title
+   &__title {
+      font-family: "Cormorant Infant", sans-serif;
+      color: $bgDark;
+      @include adaptiveValue('font-size', 40, 30);
+      letter-spacing: toRem(0.2);
+      line-height: 1.4;
+      margin-bottom: toRem(13);
+      text-transform: capitalize;
+   }
+
+   // .block-header__text
+   &__text {
+      @include adaptiveValue('font-size', 20, 16);
+      max-width: toRem(800);
+      color: $secondaryColor;
+   }
+
+   &--centered {
+      align-items: center;
+      text-align: center;
+   }
+}
+
+// ================================
+.item-menu {
+   // display: flex;
+   // flex-wrap: wrap;
+   display: grid;
+   grid-template-columns: auto 1fr;
+   gap: toRem(20);
+   align-items: start;
+
+   @media (max-width: toEm(600)) {
+      display: flex;
+      flex-direction: column;
+   }
+
+   // .item-menu__image
+   &__image {
+      width: toRem(84);
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 50%;
+
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+
+   // .item-menu__content
+   &__content {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      align-items: center;
+      align-items: end;
+      gap: toRem(10);
+
+      @media (max-width: toEm(600)) {
+         grid-template-columns: 1fr auto;
+         width: 100%;
+      }
+   }
+
+   &__line {
+      background: rgba(170, 170, 170, 1);
+      height: toRem(2);
+      width: 100%;
+      margin-bottom: toRem(8);
+
+      @media (max-width: toEm(600)) {
+         // display: none;
+      }
+   }
+
+   &__body {}
+
+   // .item-menu__title
+   &__title {
+      font-family: "Cormorant Infant", sans-serif;
+      @include adaptiveValue('font-size', 30, 18);
+      letter-spacing: toRem(0.2);
+      color: $bgDark;
+   }
+
+   // .item-menu__desc
+   &__desc {
+      position: relative;
+      @include adaptiveValue('font-size', 20, 16);
+      letter-spacing: toRem(0.2);
+      color: $secondaryColor;
+      width: toRem(390);
+
+      @media (max-width: toEm(600)) {
+         width: 100%;
+      }
+   }
+
+   // .item-menu__price
+   &__price {
+      font-family: "Cormorant Infant", sans-serif;
+      @include adaptiveValue('font-size', 30, 20);
+   }
+}
+
+// ================================
+.item-review {
+   background-color: $bgCart;
+
+   // .item-review__inner
+   &__inner {
+      @include adaptiveValue('padding-inline', 40, 20);
+      padding-block: toRem(10);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+   }
+
+   // .item-review__top
+   &__top {}
+
+   // .item-review__text
+   &__text {
+      font-family: "Cormorant Infant", sans-serif;
+      @include adaptiveValue('font-size', 24, 16);
+      max-width: toRem(454);
+      letter-spacing: 0.25px;
+      color: $white;
+      @include adaptiveValue('padding-top', 32, 10);
+      flex-grow: 1;
+   }
+}
+
+.top-review {
+   display: grid;
+   grid-template-columns: auto 1fr;
+   align-items: center;
+   @include adaptiveValue('gap', 30, 15);
+   border-bottom: toRem(1) solid $borderColor;
+   @include adaptiveValue('padding-bottom', 31, 10);
+
+
+   @media (max-width: toEm(455)) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+   }
+
+   &__icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $primiryColor;
+      padding: toRem(9);
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: toRem(30);
+      height: toRem(30);
+      border: toRem(2) solid $bgDark;
+      color: $bgDark;
+
+      &::before {
+         font-size: toRem(10);
+      }
+   }
+
+   // .top-review__avatar
+   &__avatar {
+      position: relative;
+      width: toRem(113);
+      aspect-ratio: 1;
+      overflow: hidden;
+
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         border-radius: 50%;
+      }
+   }
+
+   // .top-review__author
+   &__author {}
+
+   // .top-review__name
+   &__name {
+      font-family: "Cormorant Infant", sans-serif;
+      @include adaptiveValue('font-size', 30, 18);
+      color: $white;
+      letter-spacing: 0.2px;
+   }
+
+   // .top-review__company
+   &__company {
+      @include adaptiveValue('font-size', 20, 14);
+      color: $primiryColor;
+      letter-spacing: 0.2px;
+   }
+}
+
+// ================================
+.item-offer {
+   background: url("../assets/img/big/bg-01.webp") 100% / cover no-repeat;
+   width: 100%;
+   height: 100%;
+
+   &--pizza {
+      background: url("../assets/img/big/bg-02.webp") 100% / cover no-repeat;
+      width: 100%;
+      height: 100%;
+
+      .price-offer {
+         &::before {
+            background: url("../assets/img/png/bg-sm-black.png") 100% / cover no-repeat;
+         }
+      }
+
+      .price-offer__label,
+      .price-offer__price {
+         color: $white;
+      }
+
+      .item-offer__image {
+         aspect-ratio: 325 / 274;
+      }
+   }
+
+   // .item-offer__inner
+   &__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: toRem(20);
+      @include adaptiveValue('padding', 40, 20);
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+         &:hover {
+            .item-offer__image {
+               scale: 1.05;
+            }
+         }
+      }
+
+      @media (max-width: toEm(680)) {
+         display: flex;
+         flex-direction: column;
+      }
+   }
+
+   // .item-offer__content
+   &__content {}
+
+   // .item-offer__image
+   &__image {
+      aspect-ratio: 307 / 232;
+      overflow: hidden;
+      transition: scale 0.3s;
+      flex-shrink: 0;
+
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+
+      @media (max-width: toEm(1259)) {
+         //   flex-grow: 1;
+      }
+   }
+}
+
+.content-offer {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   flex-shrink: 0;
+
+   @media (max-width: toEm(1259)) {
+      // width: 50%;
+      // width: 100%;
+   }
+
+   @media (max-width: toEm(428)) {
+      // width: 100%;
+   }
+
+   >* {
+      margin-bottom: toRem(8);
+
+      &:first-child,
+      &:last-child {
+         margin-bottom: toRem(0);
+      }
+   }
+
+   // .content-offer__label
+   &__label {
+      text-transform: uppercase;
+      @include adaptiveValue('font-size', 15, 10);
+      letter-spacing: 4.5px;
+      color: $bgDark;
+      border-top: toRem(1) solid $bgDark;
+      border-bottom: toRem(1) solid $bgDark;
+      padding-top: toRem(4);
+      margin-top: toRem(50);
+   }
+
+   // .content-offer__title
+   &__title {
+      font-family: "Cormorant Infant", sans-serif;
+      letter-spacing: 0.2px;
+      @include adaptiveValue('font-size', 40, 30);
+      color: $bgDark;
+      margin-bottom: toRem(5);
+   }
+
+   // .content-offer__text
+   &__text {
+      letter-spacing: 0.2px;
+      @include adaptiveValue('font-size', 20, 16);
+      color: $secondaryColor;
+      max-width: toRem(245);
+   }
+}
+
+.price-offer {
+   position: relative;
+   flex-direction: column;
+   display: flex;
+   // justify-content: center;
+   align-items: center;
+   // margin-bottom: toRem(40);
+   z-index: 5;
+   padding-inline-start: toRem(40);
+
+
+   &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url("../assets/img/png/bg-sm-white.png") 100% / cover no-repeat;
+      width: toRem(167);
+      height: toRem(104);
+      z-index: -1;
+      // box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+   }
+
+   // .price-offer__label
+   &__label {
+      font-size: toRem(15);
+      text-transform: uppercase;
+      letter-spacing: 0.15px;
+      color: $bgDark;
+   }
+
+   // .price-offer__price
+   &__price {
+      font-family: "Cormorant Infant", sans-serif;
+      font-size: toRem(60);
+      letter-spacing: 0.2px;
+      color: $bgDark;
+      line-height: 110%;
+   }
+}
+
+// ================================
+.cart-menu {
+
+   // .cart-menu__inner
+   &__inner {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+   }
+
+   // .cart-menu__image
+   &__image {
+      aspect-ratio: 318 / 307;
+      overflow: hidden;
+
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         transition: scale 0.3s;
+         will-change: scale;
+
+         @media (any-hover: hover) and (any-pointer: fine) {
+            &:hover {
+               scale: 1.05;
+            }
+         }
+      }
+   }
+}
+
+.content-menu {
+   display: flex;
+   flex-direction: column;
+   @include adaptiveValue('gap', 15, 8);
+   flex-grow: 1;
+
+   // .content-menu__title
+   &__title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: toRem(20);
+      @include adaptiveValue('padding-block', 10, 5);
+      transition: all 0.3s;
+      font-weight: 700;
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+         &:hover {}
+      }
+   }
+
+   &__link {
+      font-family: "Cormorant Infant", sans-serif;
+      font-size: toRem(30);
+      letter-spacing: 0.2px;
+      color: $bgDark;
+   }
+
+   &__top {}
+
+   // .content-menu__price
+   &__price {
+      font-family: "Cormorant Infant", sans-serif;
+      font-size: toRem(30);
+      letter-spacing: 0.2px;
+      color: $bgDark;
+   }
+
+   // .content-menu__text
+   &__text {
+      font-size: toRem(20);
+      letter-spacing: 0.2px;
+      color: $secondaryColor;
+   }
+}

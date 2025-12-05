@@ -1,0 +1,172 @@
+@use '../settings/settings' as *;
+@use '../settings/mixins' as *;
+
+
+.header {
+   // display: none;
+   background-color: $bgDark;
+   position: fixed;
+   width: 100%;
+   top: 0;
+   left: 0;
+   z-index: 100;
+   transition: transform 0.3s;
+
+   &.scrolled {
+      transform: translateY(-100%);
+   }
+
+   // .header__top
+   &__top {}
+
+   // .header__body
+   &__body {}
+}
+
+.top-header {
+   @include adaptiveValue('padding-block', 50, 30);
+   border-bottom: toRem(1) solid $borderBg;
+
+   // .top-header__container
+   &__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @include adaptiveValue('gap', 40, 20);
+   }
+
+   // .top-header__button
+   &__button {}
+
+   // .top-header__logo
+   &__logo {}
+
+   @media (max-width: toEm(910)) {
+      display: none;
+   }
+}
+
+.logo {
+
+   // @include adaptiveValue('width',378,150);
+   // .logo__image
+   &__image {
+      fill: $primiryColor;
+   }
+}
+
+.body-header {
+   color: $white;
+   border-bottom: toRem(1) solid $borderBg;
+   @include adaptiveValue('padding-block', 25, 15);
+
+   // .body-header__container
+   &__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      @include adaptiveValue('gap', 40, 20);
+   }
+
+   // .body-header__menu
+   &__menu {
+      @media (max-width: toEm(849)) {
+         display: block;
+         position: fixed;
+         top: 0;
+         left: -100%;
+         width: 100%;
+         height: 100%;
+         background-color: $bgCart;
+         padding: toRem(130) toRem(15) toRem(30) toRem(15);
+         transition: all 0.3s;
+
+         .menu-open & {
+            left: 0;
+         }
+
+         &::before {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: toRem(120);
+            background-color: $bgDark;
+            transition: all 0.3s;
+
+            .menu-open & {
+               left: 0;
+            }
+         }
+      }
+   }
+
+   // .body-header__list
+   &__list {
+      display: flex;
+      align-items: center;
+      @include adaptiveValue('gap', 60, 20);
+      flex-wrap: wrap;
+
+      @media (max-width: toEm(849)) {
+         flex-direction: column;
+         gap: toRem(30);
+         align-items: flex-start;
+      }
+   }
+
+   // .body-header__item
+   &__item {}
+
+   // .body-header__link
+   &__link {
+      font-size: toRem(20);
+      transition: color 0.3s;
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+         &:hover {
+            color: $primiryColor;
+         }
+      }
+
+      @media (max-width: toEm(849)) {
+         color: $white;
+         font-size: toRem(26);
+      }
+   }
+}
+
+.social-media-header {
+   position: relative;
+   z-index: 10;
+
+   // .social-media-header__list
+   &__list {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: toRem(20);
+   }
+
+   // .social-media-header__item
+   &__item {}
+
+   // .social-media-header__link
+   &__link {
+
+      &::before {
+         font-size: toRem(24);
+         transition: color 0.3s;
+
+      }
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+         &:hover {
+            &::before {
+               color: $primiryColor;
+            }
+         }
+      }
+   }
+}
