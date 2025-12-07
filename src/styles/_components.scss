@@ -741,8 +741,7 @@
 
    &__box {
       position: relative;
-      display: inline-block;
-      // margin-left: toRem(-15);
+      display: inline-flex;
    }
 
    // .form-reserv__input
@@ -750,17 +749,16 @@
       display: flex;
       align-items: center;
       flex-direction: row-reverse;
-      justify-content: space-between;
+      justify-content: space-evenly;
       border: toRem(1) solid $borderColor;
-      padding-inline-start: toRem(25);
       padding-block: toRem(20);
-      padding-right: toRem(15);
       letter-spacing: 0.2px;
       font-size: toRem(22);
       color: $white;
       max-height: toRem(70);
 
       &::placeholder {
+         padding-inline-start: toRem(25);
          color: $white;
          transition: all 0.3s;
          opacity: 1;

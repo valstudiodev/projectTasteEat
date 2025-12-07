@@ -2801,7 +2801,9 @@ address {
 }
 .form-reserv__box {
   position: relative;
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 .form-reserv__input {
   display: -webkit-box;
@@ -2814,44 +2816,48 @@ address {
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   border: 0.0625rem solid rgb(121, 126, 137);
-  -webkit-padding-start: 1.5625rem;
-          padding-inline-start: 1.5625rem;
   padding-block: 1.25rem;
-  padding-right: 0.9375rem;
   letter-spacing: 0.2px;
   font-size: 1.375rem;
   color: rgb(255, 255, 255);
   max-height: 4.375rem;
 }
 .form-reserv__input::-webkit-input-placeholder {
+  -webkit-padding-start: 1.5625rem;
+          padding-inline-start: 1.5625rem;
   color: rgb(255, 255, 255);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   opacity: 1;
 }
 .form-reserv__input::-moz-placeholder {
+  padding-inline-start: 1.5625rem;
   color: rgb(255, 255, 255);
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   opacity: 1;
 }
 .form-reserv__input:-ms-input-placeholder {
+  padding-inline-start: 1.5625rem;
   color: rgb(255, 255, 255);
   -ms-transition: all 0.3s;
   transition: all 0.3s;
   opacity: 1;
 }
 .form-reserv__input::-ms-input-placeholder {
+  padding-inline-start: 1.5625rem;
   color: rgb(255, 255, 255);
   -ms-transition: all 0.3s;
   transition: all 0.3s;
   opacity: 1;
 }
 .form-reserv__input::placeholder {
+  -webkit-padding-start: 1.5625rem;
+          padding-inline-start: 1.5625rem;
   color: rgb(255, 255, 255);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
