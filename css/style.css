@@ -90,6 +90,7 @@ address {
 }
 
 .header {
+  display: none;
   background-color: rgb(41, 46, 54);
   position: fixed;
   width: 100%;
@@ -317,6 +318,9 @@ address {
   }
 }
 
+.page > :not(.page__reservation) {
+  display: none;
+}
 @media (min-width: 86.875em) {
   .page__hero {
     padding-top: 350px;
@@ -1644,6 +1648,32 @@ address {
     left: 120%;
   }
 }
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+    /* Для ефекту висування */
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+    /* Для ефекту висування */
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
 @font-face {
   font-family: "iconfont";
   src: url("/src/assets/fonts/icomoon.woff2") format("woff2");
@@ -2791,6 +2821,11 @@ address {
           column-gap: 1.875rem;
   row-gap: 1.875rem;
 }
+@media (max-width: 48.4375em) {
+  .form-reserv__top {
+    grid-template-columns: 1fr;
+  }
+}
 .form-reserv__body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(10.625rem, 100%), 1fr));
@@ -2799,11 +2834,18 @@ address {
           column-gap: 1.875rem;
   row-gap: 1.875rem;
 }
-.form-reserv__box {
+@media (max-width: 48.4375em) {
+  .form-reserv__body {
+    grid-template-columns: 1fr;
+  }
+}
+.form-reserv__wrapper {
   position: relative;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
 }
 .form-reserv__input {
   display: -webkit-box;
@@ -2816,48 +2858,64 @@ address {
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   border: 0.0625rem solid rgb(121, 126, 137);
+  -webkit-padding-start: 1.5625rem;
+          padding-inline-start: 1.5625rem;
   padding-block: 1.25rem;
   letter-spacing: 0.2px;
   font-size: 1.375rem;
   color: rgb(255, 255, 255);
   max-height: 4.375rem;
+  width: 100%;
+  min-width: 0;
+  white-space: nowrap;
+}
+@media (min-width: 86.875em) {
+  .form-reserv__input {
+    padding-right: 10px;
+  }
+}
+@media (min-width: 20em) and (max-width: 86.875em) {
+  .form-reserv__input {
+    padding-right: clamp( 5px , 3.5046728972px  +  0.4672897196vw , 10px );
+  }
+}
+@media (max-width: 20em) {
+  .form-reserv__input {
+    padding-right: 5px;
+  }
+}
+.form-reserv__input::before {
+  font-size: 1.125rem;
 }
 .form-reserv__input::-webkit-input-placeholder {
-  -webkit-padding-start: 1.5625rem;
-          padding-inline-start: 1.5625rem;
   color: rgb(255, 255, 255);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   opacity: 1;
 }
 .form-reserv__input::-moz-placeholder {
-  padding-inline-start: 1.5625rem;
   color: rgb(255, 255, 255);
   -moz-transition: all 0.3s;
   transition: all 0.3s;
   opacity: 1;
 }
 .form-reserv__input:-ms-input-placeholder {
-  padding-inline-start: 1.5625rem;
   color: rgb(255, 255, 255);
   -ms-transition: all 0.3s;
   transition: all 0.3s;
   opacity: 1;
 }
 .form-reserv__input::-ms-input-placeholder {
-  padding-inline-start: 1.5625rem;
   color: rgb(255, 255, 255);
   -ms-transition: all 0.3s;
   transition: all 0.3s;
   opacity: 1;
 }
 .form-reserv__input::placeholder {
-  -webkit-padding-start: 1.5625rem;
-          padding-inline-start: 1.5625rem;
   color: rgb(255, 255, 255);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -2887,6 +2945,17 @@ address {
   .form-reserv__input:nth-child(3) {
     grid-column: span 1;
   }
+}
+
+.type-switcher {
+  opacity: 0;
+  -webkit-transform: translateY(10px);
+      -ms-transform: translateY(10px);
+          transform: translateY(10px);
+  -webkit-animation: fadeIn 0.5s ease-out forwards;
+          animation: fadeIn 0.5s ease-out forwards;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
 }
 
 body {
@@ -2972,4 +3041,10 @@ input[type=time]::-webkit-calendar-picker-indicator {
   height: 100%;
   position: absolute;
   /* Накладемо поверх власної іконки */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+  min-width: 0;
 }

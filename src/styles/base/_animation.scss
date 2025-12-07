@@ -57,3 +57,16 @@
       left: 120%;
    }
 }
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+      transform: translateY(10px);
+      /* Для ефекту висування */
+   }
+
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}

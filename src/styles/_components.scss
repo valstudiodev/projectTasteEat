@@ -730,6 +730,10 @@
       grid-template-columns: repeat(auto-fill,minmax(min(toRem(280),100%),1fr));
       column-gap: toRem(30);
       row-gap: toRem(30);
+
+      @media (max-width: toEm(775)) {
+        grid-template-columns: 1fr;
+      }
    }
 
    &__body {
@@ -737,11 +741,17 @@
       grid-template-columns: repeat(auto-fill, minmax(min(toRem(170), 100%), 1fr));
       column-gap: toRem(30);
       row-gap: toRem(30);
+
+      @media (max-width: toEm(775)) {
+        grid-template-columns: 1fr;
+      }
    }
 
-   &__box {
+   &__wrapper {
       position: relative;
-      display: inline-flex;
+      display: flex;
+      width: 100%;
+      overflow: hidden;
    }
 
    // .form-reserv__input
@@ -749,16 +759,25 @@
       display: flex;
       align-items: center;
       flex-direction: row-reverse;
-      justify-content: space-evenly;
+      justify-content: space-between;
       border: toRem(1) solid $borderColor;
+      padding-inline-start: toRem(25);
+      // margin-inline-start: toRem(-25);
+      @include adaptiveValue('padding-right',10,5);
       padding-block: toRem(20);
       letter-spacing: 0.2px;
       font-size: toRem(22);
       color: $white;
       max-height: toRem(70);
+      width: 100%;
+      min-width: 0;
+      white-space: nowrap;
+
+      &::before {
+         font-size: toRem(18);
+      }
 
       &::placeholder {
-         padding-inline-start: toRem(25);
          color: $white;
          transition: all 0.3s;
          opacity: 1;
@@ -783,3 +802,9 @@
    }
 }
 
+.type-switcher {
+   opacity: 0;
+   transform: translateY(10px);
+   animation: fadeIn 0.5s ease-out forwards;
+   animation-delay: 0.2s;
+}

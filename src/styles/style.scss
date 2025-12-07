@@ -69,4 +69,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
    height: 100%;
    position: absolute;
    /* Накладемо поверх власної іконки */
+   box-sizing: border-box;
+   width: 100%;
+   flex-grow: 1;
+   min-width: 0;
 }

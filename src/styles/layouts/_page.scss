@@ -8,9 +8,9 @@
 // -----------------------------
 .page {
 
-   // > :not(.page__reservation) {
-   //    display: none;
-   // }
+   > :not(.page__reservation) {
+      display: none;
+   }
 
    // .page__hero
    &__hero {
