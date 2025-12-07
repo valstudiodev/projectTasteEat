@@ -7,8 +7,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
    <title>Start-template</title>
-  <script type="module" crossorigin src="/projectTasteEat/assets/main.3d8d0d79.js"></script>
-  <link rel="stylesheet" href="/projectTasteEat/assets/index.14364cba.css">
+  <script type="module" crossorigin src="/projectTasteEat/assets/main.b7197a03.js"></script>
+  <link rel="stylesheet" href="/projectTasteEat/assets/index.2275813b.css">
 </head>
 
 <body>
@@ -772,6 +772,39 @@
                         </div>
                      </article>
                   </div>
+               </div>
+            </div>
+         </section>
+
+         <section class="page__reservation reservation">
+            <div class="reservation__inner">
+               <div class="reservation__container">
+                  <div class="reservation__header block-header block-header--centered">
+                     <div class="block-header__label">reservation</div>
+                     <h2 class="block-header__title">Book Your Table</h2>
+                  </div>
+                  <form action="#" class="reservation__form form-reserv">
+                     <div class="form-reserv__top">
+                        <input required type="text" class="form-reserv__input" placeholder="Name">
+                        <input required type="email" class="form-reserv__input" placeholder="Email">
+                     </div>
+                     <div class="form-reserv__body">
+                        <div class="form-reserv__box">
+                           <input required type="number" min="1" class="form-reserv__input" placeholder="Persons">
+                        </div>
+                        <div class="form-reserv__box">
+                           <input required id="timeInput" data-type="time" type="text"
+                              class="form-reserv__input form-reserv__input--icon-history type-switcher"
+                              data-placeholder="Timing" placeholder="Timing">
+                        </div>
+                        <div class="form-reserv__box">
+                           <input required id="dateInput" data-type="date" type="text"
+                              class="form-reserv__input form-reserv__input--icon-calendar type-switcher"
+                              data-placeholder="Date" placeholder="Date">
+                        </div>
+                     </div>
+                  </form>
+                  <button type="button" class="reservation__button button button--white">Book A Table</button>
                </div>
             </div>
          </section>
