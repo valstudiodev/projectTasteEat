@@ -47,3 +47,26 @@ body {
    padding-inline: toRem(math.div($containerPadding, 2));
    margin: 0 auto;
 }
+
+[class*="reservation__container"] {
+   max-width: toRem(920);
+   // padding-inline: toRem(math.div($containerPadding, 2));
+   margin: 0 auto;
+   @include adaptiveValue('padding-block', 140, 20);
+   @include adaptiveValue('padding-inline', 140, 10);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+   opacity: 0;
+   /* Робить іконку прозорою */
+   cursor: pointer;
+   /* Зберігаємо курсор, щоб показати, що поле активне */
+   display: inline-block;
+   /* Забезпечуємо, щоб вона займала місце для кліку */
+   width: 100%;
+   /* Розширюємо зону кліку на все поле */
+   height: 100%;
+   position: absolute;
+   /* Накладемо поверх власної іконки */
+}

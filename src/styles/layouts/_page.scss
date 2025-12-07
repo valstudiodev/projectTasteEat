@@ -8,7 +8,7 @@
 // -----------------------------
 .page {
 
-   // > :not(.page__blog) {
+   // > :not(.page__reservation) {
    //    display: none;
    // }
 
@@ -63,6 +63,11 @@
    &__blog {
       @include adaptiveValue('padding-top', 140, 50);
       @include adaptiveValue('padding-bottom', 150, 50);
+   }
+
+   // .page__reservation
+   &__reservation {
+      @include adaptiveValue('padding-block', 140, 50);
    }
 }
 
@@ -851,4 +856,54 @@
    }
 }
 
+// ===========================================================================================
+// -----------------------------
+// page__reservation
+// -----------------------------
+.reservation {
+   background-image: url("/src/assets/img/big/img-reserv.webp");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   width: 100%;
+   height: 100%;
+
+   // .reservation__inner
+   &__inner {
+      max-width: toRem(950);
+      margin: 0 auto;
+      // padding-inline: toRem(15);
+   }
+
+   // .reservation__containetr
+   &__container {
+
+      > * {
+         margin-bottom: toRem(40);
+      } &:last-child {
+         margin-bottom: toRem(0);
+      }
+
+      display: flex;
+      flex-direction: column;
+      background: rgba(41, 46, 54, 0.95);
+   }
+
+   // .reservation__header
+   &__header {
+      @include adaptiveValue('margin-bottom',40,20);
+      .block-header__label,
+      .block-header__title {
+         color: $white;
+      }
+   }
+
+   &__button {
+      align-self: center;
+      @media (max-width: toEm(412)) {
+        width: 100%;
+      }
+   }
+
+}
 
