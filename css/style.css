@@ -970,12 +970,12 @@ address {
 }
 @media (min-width: 20em) and (max-width: 86.875em) {
   .page__hero {
-    padding-top: clamp( 100px , 25.2336448598px  +  23.3644859813vw , 350px );
+    padding-top: clamp( 150px , 90.1869158879px  +  18.691588785vw , 350px );
   }
 }
 @media (max-width: 20em) {
   .page__hero {
-    padding-top: 100px;
+    padding-top: 150px;
   }
 }
 @media (min-width: 86.875em) {
@@ -2706,7 +2706,7 @@ address {
 }
 @media (max-width: 37.5em) {
   .item-menu__content {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     width: 100%;
   }
 }
@@ -3303,11 +3303,25 @@ address {
 .content-menu__title {
   position: relative;
   font-family: "Cormorant Infant", sans-serif;
-  font-size: 1.875rem;
   letter-spacing: 0.2px;
   color: rgb(41, 46, 54);
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
+}
+@media (min-width: 86.875em) {
+  .content-menu__title {
+    font-size: 30px;
+  }
+}
+@media (min-width: 20em) and (max-width: 86.875em) {
+  .content-menu__title {
+    font-size: clamp( 25px , 23.5046728972px  +  0.4672897196vw , 30px );
+  }
+}
+@media (max-width: 20em) {
+  .content-menu__title {
+    font-size: 25px;
+  }
 }
 .content-menu__price {
   font-family: "Cormorant Infant", sans-serif;

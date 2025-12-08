@@ -240,7 +240,7 @@
       gap: toRem(10);
 
       @media (max-width: toEm(600)) {
-         grid-template-columns: 1fr auto;
+         grid-template-columns: 1fr auto auto;
          width: 100%;
       }
    }
@@ -615,7 +615,7 @@
    &__title {
       position: relative;
       font-family: "Cormorant Infant", sans-serif;
-      font-size: toRem(30);
+      @include adaptiveValue('font-size',30,25);
       letter-spacing: 0.2px;
       color: $bgDark;
       transition: color 0.3s;

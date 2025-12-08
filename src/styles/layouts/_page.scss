@@ -14,7 +14,7 @@
 
    // .page__hero
    &__hero {
-      @include adaptiveValue('padding-top', 350, 100);
+      @include adaptiveValue('padding-top', 350, 150);
    }
 
    // .page__story
