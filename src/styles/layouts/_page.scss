@@ -8,7 +8,7 @@
 // -----------------------------
 .page {
    // display: none;
-   // > :not(.page__reservation) {
+   // > :not(.page__popular) {
    //    display: none;
    // }
 
@@ -742,13 +742,10 @@
    }
 }
 
-.cart {
+.carts {
    display: grid;
    grid-template-columns: repeat(auto-fill, minmax(min(toRem(250), 100%), 1fr));
    gap: toRem(30);
-
-   // .cart__item
-   &__item {}
 }
 
 // ===========================================================================================

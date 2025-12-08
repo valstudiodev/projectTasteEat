@@ -3,18 +3,10 @@
 
 
 .footer {
+   // display: none;
    background-color: $bgDark;
    @include adaptiveValue('padding-top',130,50);
    color: $white;
-
-   // .footer__top
-   &__top {}
-
-   // .footer__body
-   &__body {}
-
-   // .footer__bottom
-   &__bottom {}
 }
 
 .top-footer {
@@ -24,7 +16,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: toRem(30);
+      @include adaptiveValue('gap',30,10);
       flex-wrap: wrap;
 
       @media (max-width: toEm(658)) {
@@ -34,14 +26,36 @@
 
    // .top-footer__hashtag
    &__hashtag {
+      position: relative;
       letter-spacing: 0.2px;
       @include adaptiveValue('font-size',22,18);
+      transition: color 0.3s;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: toRem(1);
+        background-color: $primiryColor;
+        transition: width 0.3s;
+      }
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+        &:hover {
+         color: $primiryColor;
+         &::after {
+            width: 100%;
+         }
+        }
+      }
    }
 
    // .top-footer__logo
    &__logo {
       fill: $primiryColor;
-      // flex-shrink: 0;
+      @include adaptiveValue('width',378,250);
    }
 
    // .top-footer__social
@@ -63,20 +77,28 @@
    // .social-media-footer__link
    &__link {
 
-      // .social-media-footer__link--icon-instagram
+      &::before {
+         transition: all 0.3s;
+      }
 
+      @media (any-hover: hover) and (any-pointer: fine) {
+        &:hover {
+         &::before {
+            color: $primiryColor;
+         }
+        }
+      }
+
+      // .social-media-footer__link--icon-instagram
       &--icon-instagram {}
 
       // .social-media-footer__link--icon-fb
-
       &--icon-fb {}
 
       // .social-media-footer__link--icon-twitter
-
       &--icon-twitter {}
 
       // .social-media-footer__link--icon-pinterest
-
       &--icon-pinterest {}
    }
 }
@@ -105,6 +127,7 @@
    display: flex;
    flex-direction: column;
    align-items: flex-start;
+   gap: toRem(5);
 
    // .column-contacts__label
    &__label {
@@ -118,8 +141,30 @@
 
    // .column-contacts__address
    &__address {
+      position: relative;
       letter-spacing: 0.2px;
       @include adaptiveValue('font-size',20,16);
+
+      &::after {
+         content: "";
+         position: absolute;
+         bottom: 0;
+         left: 50%;
+         translate: -50% 0;
+         width: 0;
+         height: toRem(1);
+         background-color: $primiryColor;
+         transition: width 0.3s;
+      }
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+         &:hover {
+            color: $primiryColor;
+            &::after {
+               width: 100%;
+            }
+         }
+      }
    }
 
    // .column-contacts__phone
@@ -127,6 +172,13 @@
       letter-spacing: 0.2px;
       font-size: toRem(19);
       color: $primiryColor;
+      transition: color 0.3s;
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+        &:hover {
+         color: $white;
+        }
+      }
    }
 
    // .column-contacts__email
@@ -134,6 +186,13 @@
       letter-spacing: 0.2px;
       font-size: toRem(19);
       color: $primiryColor;
+      transition: color 0.3s;
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+         &:hover {
+            color: $white;
+         }
+      }
    }
 }
 
@@ -248,6 +307,7 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
+      column-gap: toRem(5);
       row-gap: toRem(10);
 
       @media (max-width: toEm(977)) {
@@ -256,14 +316,29 @@
       }
    }
 
-   // .bottom-footer__copyright
-   &__copyright {}
+   &__link {
+      transition: all 0.3s;
 
-   // .bottom-footer__disigned
-   &__disigned {}
+      &:not(:last-child) {
+         border-right: toRem(1) solid $white;
+         padding-right: toRem(5);
+      }
+      span {
+            color: $primiryColor;
+         }
 
-   // .bottom-footer__powered
-   &__powered {}
+      @media (any-hover: hover) and (any-pointer: fine) {
+        &:hover {
+         text-decoration: underline;
+        }
+      }
+
+      &--copyright {}
+
+      &--disigned {}
+
+      &--powered {}
+    }
 }
 
 .terms-footer {
@@ -290,5 +365,13 @@
       letter-spacing: 0.2px;
       font-size: toRem(20);
       color: $primiryColor;
+      transition: color 0.3s;
+
+      @media (any-hover: hover) and (any-pointer: fine) {
+        &:hover {
+            color: $white;
+            text-decoration: underline;
+        }
+      }
    }
 }
