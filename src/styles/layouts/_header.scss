@@ -10,10 +10,17 @@
    top: 0;
    left: 0;
    z-index: 100;
-   transition: transform 0.3s;
+   transition: top 0.4s ease;
 
    &.scrolled {
-      transform: translateY(-100%);
+      // transform: translateY(-100%);
+      top: -100%;
+   }
+
+   &.scrolled {
+      &.visible {
+         top: 0;
+      }
    }
 }
 
@@ -37,7 +44,7 @@
       fill: $primiryColor;
 
       @media (max-width: toEm(849)) {
-        fill: $white;
+      //   fill: $white;
       }
       @media (max-width: toEm(383)) {
         flex-grow: 1;

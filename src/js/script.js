@@ -34,34 +34,32 @@ function windowLoad() {
 //    }
 // }
 
+
 function initScrollHeader() {
    const header = document.querySelector('.header');
    if (!header) return;
 
-   let lastScroll = 0;
+   let lastScroll = window.scrollY;
    const OFFSET = 50;
 
    const onScroll = () => {
       const current = window.scrollY;
 
-      // Верх сторінки — початковий стан
+      // На самому верху — стандартний вигляд
       if (current <= OFFSET) {
-         header.classList.remove('scrolled');
-         header.style.transform = '';
+         header.classList.remove('scrolled', 'visible');
          lastScroll = current;
          return;
       }
 
-      // Скрол вниз → ховаємо
+      // Скрол вниз — ховаємо
       if (current > lastScroll) {
          header.classList.add('scrolled');
-         header.style.transform = 'translateY(-100%)';
+         header.classList.remove('visible');
       }
-
-      // Скрол вгору → показуємо
-      if (current < lastScroll) {
-         header.classList.add('scrolled');
-         header.style.transform = 'translateY(0)';
+      // Скрол вгору — показуємо
+      else {
+         header.classList.add('scrolled', 'visible');
       }
 
       lastScroll = current;
@@ -69,6 +67,10 @@ function initScrollHeader() {
 
    window.addEventListener('scroll', onScroll, { passive: true });
 }
+
+
+
+
 
 
 
@@ -127,6 +129,26 @@ document.addEventListener('DOMContentLoaded', () => {
    mediaQuery.addEventListener('change', handleLogoMovement);
 });
 
+function moveButtons() {
+   const buttonHeader = document.querySelectorAll(`.top-header__button`)
+   if (!buttonHeader) {
+      console.error("Не знайдено один або більше необхідних елементів. Перевірте селектори!");
+      return;
+   }
+
+   const originalParent = buttonHeader.parentElement;
+   const originalNextSibling = logoToMove.nextSibling;
+
+   const mediaQuery = window.matchMedia('(max-width: 849px)');
+
+   function buttonMovement(mq) {
+      if (mq.matches) {
+         if (buttonHeader.previousElementSibling !== referenceElement) {
+            referenceElement.insertAdjacentElement('afterend', buttonHeader);
+         }
+      }
+   }
+}
 
 
 // ===========================================================================================
@@ -141,6 +163,23 @@ function documentActions(e) {
       document.documentElement.classList.toggle('menu-open')
    }
 }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//    initNavigation();
+// });
+
+// function initNavigation() {
+//    const burger = document.querySelector('.icon-menu');
+//    const body = document.body;
+
+//    if (!burger) return;
+
+//    burger.addEventListener('click', () => {
+//       body.classList.toggle('menu-open');
+//       burger.classList.toggle('icon-menu--active');
+//    });
+// }
+
 
 // ===========================================================================================
 // -----------------------------
