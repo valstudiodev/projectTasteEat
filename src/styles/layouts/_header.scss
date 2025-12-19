@@ -13,7 +13,6 @@
    transition: top 0.5s ease, opacity 0.3s ease;
 
    &.scrolled {
-      // transform: translateY(-100%);
       top: -100%;
       opacity: 0;
    }
@@ -29,6 +28,10 @@
 .top-header {
    @include adaptiveValue('padding-block', 50, 30);
    border-bottom: toRem(1) solid $borderBg;
+
+   @media (max-width: toEm(849)) {
+     display: none;
+   }
 
    // .top-header__container
    &__container {
@@ -54,10 +57,16 @@
    }
 
    // .top-header__button
-   &__button {}
+   &__button {
+
+      @media (max-width: toEm(849)) {
+      //   width: 100%;
+      //   text-align: center;
+      }
+   }
 
    @media (max-width: toEm(849)) {
-      display: none;
+      // display: none;
    }
 }
 
@@ -97,7 +106,7 @@
          width: 100%;
          height: 100%;
          background-color: $bgCart;
-         padding: toRem(150) toRem(15) toRem(30) toRem(15);
+         padding: toRem(160) toRem(15) toRem(30) toRem(15);
          transition: all 0.3s;
 
          .menu-open & {
@@ -130,7 +139,7 @@
       @media (max-width: toEm(849)) {
          flex-direction: column;
          gap: toRem(30);
-         align-items: flex-start;
+         align-items: center;
       }
    }
 
