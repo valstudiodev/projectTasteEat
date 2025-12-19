@@ -35,31 +35,128 @@ function windowLoad() {
 // }
 
 
+// function initScrollHeader() {
+//    const header = document.querySelector('.header');
+//    if (!header) return;
+
+//    let lastScroll = window.scrollY;
+//    const OFFSET = 50;
+
+//    const onScroll = () => {
+//       const current = window.scrollY;
+
+//       // На самому верху — стандартний вигляд
+//       if (current <= OFFSET) {
+//          header.classList.remove('scrolled', 'visible');
+//          lastScroll = current;
+//          return;
+//       }
+
+//       // Скрол вниз — ховаємо
+//       if (current > lastScroll) {
+//          header.classList.add('scrolled');
+//          header.classList.remove('visible');
+//       }
+//       // Скрол вгору — показуємо
+//       else {
+//          header.classList.add('scrolled', 'visible');
+//       }
+
+//       lastScroll = current;
+//    };
+
+//    window.addEventListener('scroll', onScroll, { passive: true });
+// }
+
+// function initScrollHeader() {
+//    const header = document.querySelector('.header');
+//    if (!header) return;
+
+//    let lastScroll = window.scrollY;
+//    let downStart = window.scrollY;
+
+//    const OFFSET = 50;
+//    const DELTA = 20;
+//    const HIDE_AFTER = 40; // скільки прокрутити вниз
+
+//    const onScroll = () => {
+//       const current = window.scrollY;
+//       const diff = current - lastScroll;
+
+//       if (Math.abs(diff) < DELTA) return;
+
+//       // Верх сторінки
+//       if (current <= OFFSET) {
+//          header.classList.remove('scrolled', 'visible');
+//          downStart = current;
+//          lastScroll = current;
+//          return;
+//       }
+
+//       // Скрол вниз
+//       if (diff > 0) {
+//          if (current - downStart > HIDE_AFTER) {
+//             header.classList.add('scrolled');
+//             header.classList.remove('visible');
+//          }
+//       }
+//       // Скрол вгору
+//       else {
+//          header.classList.add('scrolled', 'visible');
+//          downStart = current;
+//       }
+
+//       lastScroll = current;
+//    };
+
+//    window.addEventListener('scroll', onScroll, { passive: true });
+// }
+
 function initScrollHeader() {
    const header = document.querySelector('.header');
    if (!header) return;
 
    let lastScroll = window.scrollY;
+   let downStart = window.scrollY;
+
    const OFFSET = 50;
+   const DELTA = 8;
+   const HIDE_AFTER = 40;
 
    const onScroll = () => {
-      const current = window.scrollY;
+      // 1. ЗАХИСТ: Якщо меню відкрите, повністю ігноруємо логіку скролу
+      // Перевіряємо клас на html або на самому хедері
+      if (document.documentElement.classList.contains('menu-open') ||
+         header.classList.contains('menu-open')) {
+         return;
+      }
 
-      // На самому верху — стандартний вигляд
+      const current = window.scrollY;
+      const diff = current - lastScroll;
+
+      if (Math.abs(diff) < DELTA) return;
+
+      // Верх сторінки
       if (current <= OFFSET) {
          header.classList.remove('scrolled', 'visible');
+         // Скидаємо інлайн-стилі, якщо вони додавалися через JS
+         header.style.transform = '';
+         downStart = current;
          lastScroll = current;
          return;
       }
 
-      // Скрол вниз — ховаємо
-      if (current > lastScroll) {
-         header.classList.add('scrolled');
-         header.classList.remove('visible');
+      // Скрол вниз
+      if (diff > 0) {
+         if (current - downStart > HIDE_AFTER) {
+            header.classList.add('scrolled');
+            header.classList.remove('visible');
+         }
       }
-      // Скрол вгору — показуємо
+      // Скрол вгору
       else {
          header.classList.add('scrolled', 'visible');
+         downStart = current;
       }
 
       lastScroll = current;
@@ -67,7 +164,6 @@ function initScrollHeader() {
 
    window.addEventListener('scroll', onScroll, { passive: true });
 }
-
 
 
 
