@@ -4,7 +4,6 @@ window.addEventListener('load', windowLoad)
 
 document.addEventListener('click', documentActions)
 
-window.addEventListener('scroll', scrollHeader)
 
 
 let isMobile
@@ -14,7 +13,7 @@ function windowLoad() {
    isMobile.any() ? document.body.setAttribute('data-touch', '') : null
 
    slidersInit();
-   scrollHeader();
+   initScrollHeader();
    // toggleCardContent();
    showList();
    typeSwitcher();
@@ -35,17 +34,40 @@ function windowLoad() {
 //    }
 // }
 
-let lastScroll = 0;
-const header = document.querySelector(".header");
+function initScrollHeader() {
+   const header = document.querySelector('.header');
+   if (!header) return;
 
-function scrollHeader() {
-   const current = window.pageYOffset;
-   if (header && current > lastScroll) {
-      header.classList.add("scrolled");
-   } else {
-      header.classList.remove("scrolled");
-   }
-   lastScroll = current;
+   let lastScroll = 0;
+   const OFFSET = 50;
+
+   const onScroll = () => {
+      const current = window.scrollY;
+
+      // Верх сторінки — початковий стан
+      if (current <= OFFSET) {
+         header.classList.remove('scrolled');
+         header.style.transform = '';
+         lastScroll = current;
+         return;
+      }
+
+      // Скрол вниз → ховаємо
+      if (current > lastScroll) {
+         header.classList.add('scrolled');
+         header.style.transform = 'translateY(-100%)';
+      }
+
+      // Скрол вгору → показуємо
+      if (current < lastScroll) {
+         header.classList.add('scrolled');
+         header.style.transform = 'translateY(0)';
+      }
+
+      lastScroll = current;
+   };
+
+   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
 

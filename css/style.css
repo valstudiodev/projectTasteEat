@@ -1804,16 +1804,6 @@ address {
     -webkit-transition-delay: 1s;
             transition-delay: 1s;
   }
-  .row-menu__wrap.item-menu {
-    opacity: 0;
-    -webkit-transform: translateY(10px);
-        -ms-transform: translateY(10px);
-            transform: translateY(10px);
-    -webkit-transition: opacity 0.4s ease, -webkit-transform 0.4s ease;
-    transition: opacity 0.4s ease, -webkit-transform 0.4s ease;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    transition: opacity 0.4s ease, transform 0.4s ease, -webkit-transform 0.4s ease;
-  }
 }
 .row-menu__icon {
   width: 1.5625rem;

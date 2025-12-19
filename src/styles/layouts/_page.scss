@@ -550,12 +550,6 @@
                }
             }
          }
-
-         &.item-menu {
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-         }
       }
    }
 
