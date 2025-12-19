@@ -96,8 +96,8 @@ address {
   top: 0;
   left: 0;
   z-index: 100;
-  -webkit-transition: top 0.3s ease, opacity 0.5s ease;
-  transition: top 0.3s ease, opacity 0.5s ease;
+  -webkit-transition: top 0.5s ease, opacity 0.3s ease;
+  transition: top 0.5s ease, opacity 0.3s ease;
 }
 .header.scrolled {
   top: -100%;
