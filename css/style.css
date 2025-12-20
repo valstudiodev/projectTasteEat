@@ -272,7 +272,7 @@ address {
     width: 100%;
     height: 100%;
     background-color: rgb(52, 57, 66);
-    padding: 10rem 0.9375rem 1.875rem 0.9375rem;
+    padding: 10rem 0.9375rem 3.125rem 0.9375rem;
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
   }
@@ -324,10 +324,12 @@ address {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    gap: 1.875rem;
+    gap: 1.25rem;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    border-top: 0.0625rem solid rgb(92, 97, 104);
+    padding-top: 0.9375rem;
   }
 }
 .body-header__link {

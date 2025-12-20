@@ -7,34 +7,50 @@ export function initEffects() {
    showList()
 }
 
+
 function initScrollHeader() {
    const header = document.querySelector('.header');
    if (!header) return;
 
-   let lastScroll = window.scrollY;
-   let downStart = window.scrollY;
+   // 1. Ініціалізація: встановлюємо стан відразу при завантаженні
+   let currentScroll = window.scrollY;
+   let lastScroll = currentScroll;
+   let downStart = currentScroll;
+
+   // Якщо сторінка вже проскролена при завантаженні (після оновлення)
+   if (currentScroll > 50) {
+      header.classList.add('scrolled');
+      // Можна додати 'visible', щоб хедер був відразу при оновленні,
+      // або залишити прихованим до першого руху вгору
+      header.classList.add('visible');
+   }
 
    const OFFSET = 50;
    const DELTA = 8;
    const HIDE_AFTER = 40;
 
    const onScroll = () => {
-      // 1. ЗАХИСТ: Якщо меню відкрите, повністю ігноруємо логіку скролу
-      // Перевіряємо клас на html або на самому хедері
+      const current = window.scrollY;
+
+      // 2. ЗАХИСТ ВІД FOOTER: перевіряємо, чи ми в самому низу
+      // Якщо до низу сторінки залишилось менше 20px, ігноруємо логіку появи
+      const scrollHeight = document.documentElement.scrollHeight;
+      const screenHeight = window.innerHeight;
+      const isBottom = current + screenHeight >= scrollHeight - 20;
+
+      // Захист: меню відкрите або iOS "відскок" (negative scroll)
       if (document.documentElement.classList.contains('menu-open') ||
-         header.classList.contains('menu-open')) {
+         header.classList.contains('menu-open') ||
+         current < 0) {
          return;
       }
 
-      const current = window.scrollY;
       const diff = current - lastScroll;
-
       if (Math.abs(diff) < DELTA) return;
 
-      // Верх сторінки
+      // Верх сторінки (повне скидання)
       if (current <= OFFSET) {
          header.classList.remove('scrolled', 'visible');
-         // Скидаємо інлайн-стилі, якщо вони додавалися через JS
          header.style.transform = '';
          downStart = current;
          lastScroll = current;
@@ -48,17 +64,60 @@ function initScrollHeader() {
             header.classList.remove('visible');
          }
       }
-      // Скрол вгору
+      // Скрол вгору (тільки якщо ми НЕ в самому низу)
       else {
-         header.classList.add('scrolled', 'visible');
+         if (!isBottom) {
+            header.classList.add('scrolled', 'visible');
+         }
          downStart = current;
       }
 
       lastScroll = current;
    };
 
+   // throttle для оптимізації (опціонально, але scroll і так працює часто)
    window.addEventListener('scroll', onScroll, { passive: true });
 }
+
+
+
+// function initScrollHeader() {
+//    const header = document.querySelector('.header');
+//    if (!header) return;
+
+//    const OFFSET = 50;
+//    const DELTA = 8;
+
+//    let lastScroll = window.scrollY;
+
+//    if (lastScroll > OFFSET) {
+//       header.classList.add('scrolled');
+//    }
+
+//    const onScroll = () => {
+//       const current = window.scrollY;
+//       const diff = current - lastScroll;
+
+//       const isBottom =
+//          window.innerHeight + current >= document.body.offsetHeight - 2;
+
+//       if (Math.abs(diff) < DELTA || isBottom) return;
+
+//       if (current <= OFFSET) {
+//          header.classList.remove('scrolled', 'visible');
+//       } else if (diff > 0) {
+//          header.classList.add('scrolled');
+//          header.classList.remove('visible');
+//       } else {
+//          header.classList.add('scrolled', 'visible');
+//       }
+
+//       lastScroll = current;
+//    };
+
+//    window.addEventListener('scroll', onScroll, { passive: true });
+// }
+
 
 // ===========================================================================================
 // -----------------------------
