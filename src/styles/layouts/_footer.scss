@@ -42,13 +42,11 @@
         transition: width 0.3s;
       }
 
-      @media (any-hover: hover) and (any-pointer: fine) {
-        &:hover {
+      @include hover {
          color: $primiryColor;
          &::after {
-            width: 100%;
-         }
-        }
+               width: 100%;
+            }
       }
    }
 
@@ -81,12 +79,10 @@
          transition: all 0.3s;
       }
 
-      @media (any-hover: hover) and (any-pointer: fine) {
-        &:hover {
+      @include hover {
          &::before {
             color: $primiryColor;
          }
-        }
       }
 
       // .social-media-footer__link--icon-instagram
@@ -157,12 +153,10 @@
          transition: width 0.3s;
       }
 
-      @media (any-hover: hover) and (any-pointer: fine) {
-         &:hover {
-            color: $primiryColor;
-            &::after {
-               width: 100%;
-            }
+      @include hover {
+         color: $primiryColor;
+         &::after {
+            width: 100%;
          }
       }
    }
@@ -174,10 +168,8 @@
       color: $primiryColor;
       transition: color 0.3s;
 
-      @media (any-hover: hover) and (any-pointer: fine) {
-        &:hover {
+      @include hover {
          color: $white;
-        }
       }
    }
 
@@ -188,10 +180,8 @@
       color: $primiryColor;
       transition: color 0.3s;
 
-      @media (any-hover: hover) and (any-pointer: fine) {
-         &:hover {
-            color: $white;
-         }
+      @include hover {
+         color: $white;
       }
    }
 }
@@ -367,11 +357,9 @@
       color: $primiryColor;
       transition: color 0.3s;
 
-      @media (any-hover: hover) and (any-pointer: fine) {
-        &:hover {
-            color: $white;
-            text-decoration: underline;
-        }
+      @include hover {
+         color: $white;
+         text-decoration: underline;
       }
    }
 }

@@ -8,18 +8,14 @@ export function initInputMode() {
    const html = document.documentElement;
    let lockedByKeyboard = false;
 
-   // const set = (type) => {
-   //    if (html.dataset.input !== type) {
-   //       html.dataset.input = type;
-   //    }
-   // };
-
    function setInputMode(type) {
-      html.dataset.input = type;
+      if (html.dataset.input !== type) {
+         html.dataset.input = type;
+      }
    }
 
-   const isTouchInitial = window.matchMedia('(pointer: coarse)').matches;
-   setInputMode(isTouchInitial ? 'touch' : 'mouse');
+   // ✅ Mobile First: старт з touch
+   setInputMode('touch');
 
    window.addEventListener('keydown', (e) => {
       if (e.key === 'Tab') {
@@ -29,13 +25,19 @@ export function initInputMode() {
    });
 
    window.addEventListener('pointermove', (e) => {
+      // 🛡 Додатковий захист: перевіряємо e.movement (чи реально рухається миша)
+      // Або просто суворо фільтруємо тип
       if (e.pointerType === 'mouse' && !lockedByKeyboard) {
-         setInputMode('mouse');
+         // На деяких тачах рух пальцем викликає pointermove з mouse і movement: 0
+         if (e.movementX !== 0 || e.movementY !== 0) {
+            setInputMode('mouse');
+         }
       }
    }, { passive: true });
 
    window.addEventListener('pointerdown', (e) => {
       lockedByKeyboard = false;
-      setInputMode(e.pointerType);
+      // Суворе розділення
+      setInputMode(e.pointerType === 'mouse' ? 'mouse' : 'touch');
    });
 }

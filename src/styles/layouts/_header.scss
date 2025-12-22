@@ -57,17 +57,7 @@
    }
 
    // .top-header__button
-   &__button {
-
-      @media (max-width: toEm(849)) {
-      //   width: 100%;
-      //   text-align: center;
-      }
-   }
-
-   @media (max-width: toEm(849)) {
-      // display: none;
-   }
+   &__button {}
 }
 
 .body-header {
@@ -154,10 +144,8 @@
       font-size: toRem(20);
       transition: color 0.3s;
 
-      @media (any-hover: hover) and (any-pointer: fine) {
-         &:hover {
-            color: $primiryColor;
-         }
+      @include hover {
+         color: $primiryColor;
       }
 
       @media (max-width: toEm(849)) {
@@ -200,12 +188,10 @@
 
       }
 
-      @media (any-hover: hover) and (any-pointer: fine) {
-         &:hover {
-            &::before {
+      @include hover {
+         &::before {
                color: $primiryColor;
             }
          }
-      }
    }
 }

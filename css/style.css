@@ -337,10 +337,8 @@ address {
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-@media (any-hover: hover) and (any-pointer: fine) {
-  .body-header__link:hover {
-    color: rgb(225, 177, 104);
-  }
+html[data-input=mouse] .body-header__link:hover {
+  color: rgb(225, 177, 104);
 }
 @media (max-width: 53.0625em) {
   .body-header__link {
@@ -384,10 +382,8 @@ address {
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-@media (any-hover: hover) and (any-pointer: fine) {
-  .social-media-header__link:hover::before {
-    color: rgb(225, 177, 104);
-  }
+html[data-input=mouse] .social-media-header__link:hover::before {
+  color: rgb(225, 177, 104);
 }
 
 .footer {
@@ -481,13 +477,11 @@ address {
   -webkit-transition: width 0.3s;
   transition: width 0.3s;
 }
-@media (any-hover: hover) and (any-pointer: fine) {
-  .top-footer__hashtag:hover {
-    color: rgb(225, 177, 104);
-  }
-  .top-footer__hashtag:hover::after {
-    width: 100%;
-  }
+html[data-input=mouse] .top-footer__hashtag:hover {
+  color: rgb(225, 177, 104);
+}
+html[data-input=mouse] .top-footer__hashtag:hover::after {
+  width: 100%;
 }
 .top-footer__logo {
   fill: rgb(225, 177, 104);
@@ -526,10 +520,8 @@ address {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-@media (any-hover: hover) and (any-pointer: fine) {
-  .social-media-footer__link:hover::before {
-    color: rgb(225, 177, 104);
-  }
+html[data-input=mouse] .social-media-footer__link:hover::before {
+  color: rgb(225, 177, 104);
 }
 .body-footer {
   border-bottom: 0.125rem solid rgb(92, 97, 104);
@@ -649,13 +641,11 @@ address {
   -webkit-transition: width 0.3s;
   transition: width 0.3s;
 }
-@media (any-hover: hover) and (any-pointer: fine) {
-  .column-contacts__address:hover {
-    color: rgb(225, 177, 104);
-  }
-  .column-contacts__address:hover::after {
-    width: 100%;
-  }
+html[data-input=mouse] .column-contacts__address:hover {
+  color: rgb(225, 177, 104);
+}
+html[data-input=mouse] .column-contacts__address:hover::after {
+  width: 100%;
 }
 .column-contacts__phone {
   letter-spacing: 0.2px;
@@ -664,10 +654,8 @@ address {
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-@media (any-hover: hover) and (any-pointer: fine) {
-  .column-contacts__phone:hover {
-    color: rgb(255, 255, 255);
-  }
+html[data-input=mouse] .column-contacts__phone:hover {
+  color: rgb(255, 255, 255);
 }
 .column-contacts__email {
   letter-spacing: 0.2px;
@@ -676,10 +664,8 @@ address {
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-@media (any-hover: hover) and (any-pointer: fine) {
-  .column-contacts__email:hover {
-    color: rgb(255, 255, 255);
-  }
+html[data-input=mouse] .column-contacts__email:hover {
+  color: rgb(255, 255, 255);
 }
 
 .column-subscribe {
@@ -953,11 +939,9 @@ address {
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
-@media (any-hover: hover) and (any-pointer: fine) {
-  .terms-footer__link:hover {
-    color: rgb(255, 255, 255);
-    text-decoration: underline;
-  }
+html[data-input=mouse] .terms-footer__link:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
 }
 
 @media (min-width: 86.875em) {
@@ -1533,6 +1517,7 @@ address {
 .content-story > *:last-child {
   margin-bottom: 0rem;
 }
+
 .top-story {
   grid-column: span 2;
 }
@@ -1585,6 +1570,7 @@ address {
   color: rgb(85, 85, 85);
   margin-bottom: 1.25rem;
 }
+
 .menu__inner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1599,6 +1585,7 @@ address {
             flex-direction: column;
   }
 }
+
 .info-menu {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 30.625rem;
@@ -1887,6 +1874,7 @@ address {
     margin-bottom: 70px;
   }
 }
+
 .swiper-pagination-bullet {
   width: 1.25rem;
   height: 1.25rem;

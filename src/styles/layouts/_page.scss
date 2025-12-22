@@ -98,8 +98,6 @@
       position: relative;
       aspect-ratio: 595 / 740;
       overflow: hidden;
-      // border-left: toRem(30) solid $bgCart;
-      // border-right: toRem(30) solid $bgCart;
       border-top: toRem(30) solid $bgCart;
 
       &::before,
@@ -108,7 +106,6 @@
          position: absolute;
          top: toRem(0);
          width: toRem(30);
-         // height: calc(100% - toRem(30));
          height: 100%;
          background-color: $bgCart;
       }
@@ -120,17 +117,6 @@
       &::after {
          right: 0;
       }
-
-      // &::before {
-      //    content: "";
-      //    position: absolute;
-      //    top: 0;
-      //    left: 50%;
-      //    translate: -50% 0;
-      //    height: toRem(30);
-      //    width: calc(100% - toRem(0));
-      //    background-color: red;
-      // }
 
       img {
          position: relative;
@@ -159,7 +145,6 @@
 }
 
 .content-hero {
-   // @include adaptiveValue('padding-block', 50, 30);
    padding-block: toRem(20);
 
    >* {
@@ -211,10 +196,6 @@
 
    // .info__container
    &__container {
-      // display: flex;
-      // align-items: center;
-      // justify-content: space-between;
-      // flex-wrap: wrap;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(toRem(400), 100%), 1fr));
       gap: toRem(30);
@@ -277,7 +258,6 @@
    }
 }
 
-
 // ===========================================================================================
 // -----------------------------
 // page__story
@@ -312,8 +292,6 @@
 }
 
 .content-story {
-   // flex: 1 1 50%;
-   // flex-basis: 50%;
    display: grid;
    grid-template-columns: repeat(2, 1fr);
    grid-template-rows: auto;
@@ -325,15 +303,6 @@
          margin-bottom: toRem(0);
       }
    }
-
-   // .content-story__top
-   &__top {}
-
-   // .content-story__body
-   &__body {}
-
-   // .content-story__bottom
-   &__bottom {}
 }
 
 .top-story {
@@ -361,7 +330,6 @@
    grid-column: span 2;
 
    @media (min-width: toEm(500)) {
-      // grid-column: span 2;
       display: flex;
    }
 
@@ -398,10 +366,7 @@
       margin-bottom: toRem(20);
    }
 
-   // .bottom-story__image
-   &__image {}
 }
-
 
 // ===========================================================================================
 // -----------------------------
@@ -421,12 +386,6 @@
          flex-direction: column;
       }
    }
-
-   // .menu__info
-   &__info {}
-
-   // .menu__main
-   &__main {}
 }
 
 .info-menu {
@@ -463,7 +422,6 @@
    // .info-menu__image
    &__image {
       aspect-ratio: 398 / 548;
-      // padding-inline-end: toRem(93);
       margin-bottom: toRem(60);
       width: toRem(398);
 
@@ -489,20 +447,11 @@
    padding-top: toRem(30);
    @include adaptiveValue('padding-bottom', 65, 30);
 
-   @media (max-width: toEm(600)) {
-      //   text-align: center;
-   }
-
    &__inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: toRem(30);
-
-      @media (max-width: toEm(600)) {
-         //   justify-content: center;
-         //   gap: toRem(50);
-      }
 
       @media (min-width: toEm(600)) {
          @include adaptiveValue('margin-bottom', 40, 20);
@@ -523,7 +472,6 @@
       @include adaptiveValue('gap', 50, 30);
 
       @media (max-width: toEm(600)) {
-         //   display: none;
          max-height: 0;
          overflow: hidden;
          transition: max-height 0.5s ease;
@@ -568,7 +516,6 @@
          content: "";
          position: absolute;
          top: 50%;
-         //   translate: 0 -50%;
          transform: translateY(-50%);
          left: 0;
          background-color: $bgDark;
@@ -579,7 +526,6 @@
       }
 
       &::after {
-         // rotate: 90deg;
          transform: translateY(-50%) rotate(90deg);
       }
 
@@ -629,12 +575,6 @@
    &__wrapper {
       @include adaptiveValue('margin-bottom', 106, 70);
    }
-
-   // .slider-review__slide
-   &__slide {}
-
-   // .slider-review__item
-   &__item {}
 }
 
 .swiper-pagination-bullet {
@@ -687,10 +627,7 @@
 .cart-offer {
    display: grid;
    grid-template-columns: repeat(auto-fill, minmax(min(toRem(600), 100%), 1fr));
-   // display: flex;
    gap: toRem(30);
-
-   @media (max-width: toEm(1259)) {}
 
    // .cart-offer__item
    &__item {}
