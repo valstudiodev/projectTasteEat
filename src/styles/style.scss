@@ -74,3 +74,44 @@ input[type="time"]::-webkit-calendar-picker-indicator {
    flex-grow: 1;
    min-width: 0;
 }
+// ===========================================================================================
+// -----------------------------
+// data-input
+// -----------------------------
+html[data-input="mouse"] {
+   .menu-dropdown__item--submenu {
+      &:hover> {
+         // .menu-dropdown__submenu {
+         //    opacity: 1;
+         //    visibility: visible;
+         //    pointer-events: auto;
+         //    transform: translateY(0);
+         // }
+      }
+   }
+}
+
+html[data-input="keyboard"] {
+   >* :focus-visible {
+      outline: toRem(2) solid $black;
+      outline-offset: toRem(4);
+   }
+
+   .is-active {
+      .submenu-dropdowne {
+         display: block;
+      }
+   }
+}
+
+html[data-input="touch"] {
+   .menu-dropdown__item--submenu {
+      &.is-active {
+         .menu-dropdown__link {
+            &::before {
+               rotate: -90deg;
+            }
+         }
+      }
+   }
+}

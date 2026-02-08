@@ -3,6 +3,41 @@
 
 <head>
    <meta charset="UTF-8" />
+   <style>
+      /* Миттєвий фон для всього вікна */
+      html {
+         background-color: #fff;
+      }
+
+      /* Ховаємо контент, поки немає статусу "ready" */
+      html[init-page-loader] body {
+         opacity: 0 !important;
+         visibility: hidden !important;
+         overflow: hidden;
+         /* Блокуємо скрол під час завантаження */
+      }
+
+      /* Повертаємо видимість та скрол */
+      html[init-page-loader="ready"] body {
+         opacity: 1 !important;
+         visibility: visible !important;
+         overflow: visible;
+         transition: opacity 0.6s ease-in-out !important;
+      }
+
+      /* Стиль прогрес-бару (щоб не чекати завантаження файлу CSS) */
+      #loader-progress-bar {
+         position: fixed;
+         top: 0;
+         left: 0;
+         height: 2px;
+         background-color: #f0f0f0;
+         z-index: 100000;
+         width: 0%;
+         transition: width 0.4s ease, opacity 0.3s ease;
+         box-shadow: 0 0 10px #F5EBDA;
+      }
+   </style>
    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
@@ -780,6 +815,10 @@
                      <h2 class="block-header__title">Book Your Table</h2>
                   </div>
                   <form action="#" class="reservation__form form-reserv">
+                     <div class="hidden-field" style="display:none;">
+                        <label>Keep this field empty</label>
+                        <input type="text" name="_gotcha">
+                     </div>
                      <div class="form-reserv__top">
                         <input required type="text" class="form-reserv__input" placeholder="Name">
                         <input required type="email" class="form-reserv__input" placeholder="Email">

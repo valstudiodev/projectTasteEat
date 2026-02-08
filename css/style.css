@@ -3745,3 +3745,15 @@ input[type=time]::-webkit-calendar-picker-indicator {
           flex-grow: 1;
   min-width: 0;
 }
+
+html[data-input=keyboard] > * :focus-visible {
+  outline: 0.125rem solid #000;
+  outline-offset: 0.25rem;
+}
+html[data-input=keyboard] .is-active .submenu-dropdowne {
+  display: block;
+}
+
+html[data-input=touch] .menu-dropdown__item--submenu.is-active .menu-dropdown__link::before {
+  rotate: -90deg;
+}
